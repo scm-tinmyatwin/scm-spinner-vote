@@ -1,0 +1,52 @@
+<mat-card class="card-container">
+  <mat-card-header>
+    <mat-card-title>{{
+      type == "edit" ? "Update" : "Register"
+    }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="voteForm" class="vote-form">
+      <mat-form-field class="form-container" appearance="outline">
+        <mat-label>Title</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="Enter title"
+          formControlName="title"
+        />
+      </mat-form-field>
+      <div class="presenter-wrapper" *ngIf="type !== 'edit'">
+        <mat-label>Presenter Name</mat-label>
+        <ng-select
+          class="custom"
+          highlightColor="#6D2E6D"
+          highlightTextColor="#fff"
+          [items]="itemList"
+          bindLabel="name"
+          appendTo="body"
+          [multiple]="multiple"
+          [clearable]="false"
+          formControlName="username"
+        >
+        </ng-select>
+      </div>
+
+      <div class="register-btn">
+        <mat-dialog-actions>
+          <button
+            (click)="type == 'edit' ? update() : register()"
+            [disabled]="!voteForm.valid"
+            type="submit"
+            mat-raised-button
+          >
+            {{ type == "edit" ? "Update" : "Register" }}
+          </button>
+        </mat-dialog-actions>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+<ngx-loading
+  [show]="loading"
+  [config]="{ backdropBorderRadius: '0px', fullScreenBackdrop: true }"
+></ngx-loading>

@@ -1,0 +1,161 @@
+<div class="main-container">
+  <div class="container">
+    <div class="wheel">
+      <div *ngIf="!loading" class="wheel-canvas"></div>
+      <img class="spin-arrow" [src]="spinArrow" alt="border" />
+      <div class="start-btn">
+        <button mat-fab (click)="spin()" [disabled]="isDisabled">
+          <mat-icon class="play-icon" matPrefix>play_circle_filled</mat-icon>
+        </button>
+      </div>
+      <ngx-wheel
+        #wheel
+        [width]="600"
+        [height]="600"
+        [spinDuration]="8"
+        [items]="items"
+        [innerRadius]="20"
+        [spinAmount]="10"
+        pointerStrokeColor="#ff1b76"
+        pointerFillColor="#ff1b76 "
+        [disableSpinOnClick]="true"
+        [textOrientation]="textOrientation"
+        [textAlignment]="textAlignment"
+        [idToLandOn]="idToLandOn"
+        (onSpinComplete)="after()"
+      ></ngx-wheel>
+    </div>
+    <div class="left-container">
+      <div class="side-wrapper">
+        <div class="add-wrapper">
+          <form
+            [formGroup]="addNewUserForm"
+            class="vote-form"
+            (ngSubmit)="addNewUser()"
+          >
+            <div class="add-container">
+              <mat-form-field class="new-user" appearance="outline">
+                <input
+                  type="text"
+                  matInput
+                  placeholder="Add New User"
+                  formControlName="newUser"
+                />
+              </mat-form-field>
+              <div>
+                <button
+                  class="add-btn"
+                  type="submit"
+                  [disabled]="!addNewUserForm.valid"
+                  mat-raised-button
+                >
+                  <mat-icon class="add-icon" matPrefix>add</mat-icon>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="add-wrapper">
+          <div class="search-container">
+            <div class="hexa-container">
+              <div [class.active]="selectAllGroup">
+                <a
+                  (click)="AddAllUser(selectAllGroup)"
+                  class="button ribbon-outset border"
+                  [class.disabled]="isDisabled"
+                  ><span class="all-user">All User</span></a
+                >
+              </div>
+            </div>
+            <div class="group-list">
+              <div *ngFor="let group of groupList; let i = index">
+                <div class="hexa-container">
+                  <div [class.active]="group.selected">
+                    <a
+                      (click)="filterByGroup(i)"
+                      class="button ribbon-outset border"
+                      [class.disabled]="isDisabled"
+                      ><span class="all-user">{{ group.name }}</span></a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="side-wrapper">
+        <div class="filter-name">
+          <mat-form-field appearance="outline">
+            <input
+              matInput
+              (keyup)="applyFilter($event)"
+              placeholder="Filter By Name"
+            />
+            <mat-icon class="search-icon" matPrefix>search</mat-icon>
+          </mat-form-field>
+        </div>
+
+        <table
+          mat-table
+          [dataSource]="dataSource"
+          class="mat-elevation-z8 table-container"
+        >
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>
+              <div>
+                Name
+                <div class="select-all">
+                  <mat-checkbox
+                    [disabled]="isDisabled"
+                    [checked]="allChecked"
+                    (change)="setAll($event.checked)"
+                  >
+                    {{ allChecked ? "Deselect All" : "Select All" }}
+                  </mat-checkbox>
+                </div>
+              </div>
+            </th>
+            <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+          </ng-container>
+
+          <!-- Group Column -->
+          <ng-container matColumnDef="group">
+            <th mat-header-cell *matHeaderCellDef>Group</th>
+            <td mat-cell *matCellDef="let element">{{ element.group }}</td>
+          </ng-container>
+
+          <!-- Action Column -->
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td *matCellDef="let element" class="actions-container">
+              <div class="actions-btn">
+                <div class="checkbox-btn">
+                  <mat-checkbox
+                    [disabled]="isDisabled"
+                    [checked]="element.selected"
+                    (change)="onChange($event, element)"
+                  ></mat-checkbox>
+                </div>
+                <button mat-icon-button (click)="deleteUserList(element.id)">
+                  <mat-icon class="delete-icon">delete</mat-icon>
+                </button>
+              </div>
+            </td>
+          </ng-container>
+
+          <tr
+            mat-header-row
+            *matHeaderRowDef="displayedColumns; sticky: true"
+          ></tr>
+          <tr mat-row *matRowDef="let element; columns: displayedColumns"></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<ngx-loading
+  [show]="loading"
+  [config]="{ backdropBorderRadius: '0px', fullScreenBackdrop: true }"
+></ngx-loading>

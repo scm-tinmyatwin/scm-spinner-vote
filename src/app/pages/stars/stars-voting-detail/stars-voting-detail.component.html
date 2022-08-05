@@ -1,0 +1,64 @@
+<div class="container">
+  <mat-card class="card-container">
+    <mat-card-header class="header-container">
+      <div class="title">
+        <mat-card-title>{{ title }}</mat-card-title>
+      </div>
+    </mat-card-header>
+    <div *ngFor="let presenter of presenterList; let i = index">
+      <mat-card-header class="header-container">
+        <div class="title">
+          <mat-card-title
+            >By <span class="presenter">{{ presenter.name }}</span>
+          </mat-card-title>
+        </div>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="star-btn">
+          <button
+            [disabled]="presenter.selectedStar === 1"
+            style="width: 100%; height: 60px"
+            mat-raised-button
+            (click)="setVoteStar(1, i)"
+          >
+            <div class="icon-align">
+              <span class="material-icons star-color"> star</span>
+            </div>
+          </button>
+        </div>
+        <div class="star-btn">
+          <button
+            [disabled]="presenter.selectedStar === 2"
+            style="width: 100%; height: 60px"
+            mat-raised-button
+            (click)="setVoteStar(2, i)"
+          >
+            <div class="icon-align">
+              <span class="material-icons star-color"> star</span>
+              <span class="material-icons star-color"> star</span>
+            </div>
+          </button>
+        </div>
+        <div class="star-btn">
+          <button
+            [disabled]="presenter.selectedStar === 3"
+            style="width: 100%; height: 60px"
+            mat-raised-button
+            (click)="setVoteStar(3, i)"
+          >
+            <div class="icon-align">
+              <span class="material-icons star-color"> star</span>
+              <span class="material-icons star-color"> star</span>
+              <span class="material-icons star-color"> star</span>
+            </div>
+          </button>
+        </div>
+      </mat-card-content>
+    </div>
+    <button class="star-vote" [disabled]="!allSelected" mat-raised-button (click)="vote()">Submit</button>
+  </mat-card>
+</div>
+<ngx-loading
+  [show]="loading"
+  [config]="{ backdropBorderRadius: '0px', fullScreenBackdrop: true }"
+></ngx-loading>

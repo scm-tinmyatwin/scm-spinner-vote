@@ -1,0 +1,501 @@
+.main-container {
+  display: flex;
+
+  ::ng-deep .mat-form-field-placeholder {
+    color: white;
+    padding-top: 5px !important;
+  }
+
+  ::ng-deep .mat-focused .mat-form-field-placeholder {
+    color: white;
+    padding-top: 5px !important;
+  }
+
+  .container {
+    margin: 100px auto;
+    padding: 5px;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    @media screen and (max-width: 930px) {
+      flex-direction: column;
+    }
+
+    .wheel {
+      position: relative;
+      align-items: center;
+      z-index: 2;
+      display: inline-block;
+      width: 600px;
+    }
+    .wheel-canvas {
+      background-color: #61b0da;
+      border-radius: 50%;
+      z-index: -1;
+      position: absolute;
+      top: 24px;
+      left: 6px;
+      width: 590px;
+      height: 590px;
+      box-shadow: 0 3px 1px -2px #0003, 0 2px 2px #00000024, 0 1px 5px #0000001f;
+    }
+    ngx-wheel {
+      display: block;
+      position: absolute;
+      top: 0;
+    }
+    .spin-arrow {
+      position: absolute;
+      width: 65px;
+      height: 85px;
+      z-index: 3;
+      top: -25px;
+      left: 269px;
+    }
+    .start-btn {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      z-index: 4;
+      top: 292px;
+      left: 275px;
+      .play-icon {
+        color: #2985b6;
+        font-size: 63px;
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        left: -1px;
+        top: -1px;
+      }
+    }
+
+    ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+      color: white;
+    }
+
+    .button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100px;
+      margin: 3px !important;
+    }
+    .actionsBtn {
+      display: flex;
+      flex-direction: row;
+      text-align: center;
+    }
+    .addBtn {
+      float: right;
+      height: 50px;
+      margin-bottom: 20px;
+    }
+
+    .mat-form-field {
+      font-size: 14px;
+      width: 100%;
+    }
+
+    .mat-fab {
+      color: white;
+      background: #fdfeff;
+      font-size: 16px;
+      margin-right: 5px !important;
+      margin-bottom: 10px !important;
+      width: 60px;
+      height: 60px;
+    }
+
+    .mat-fab:hover {
+      box-shadow: rgba(255, 255, 255, 0.2) 0 3px 15px inset,
+        rgba(0, 0, 0, 0.1) 0 3px 5px, rgba(0, 0, 0, 0.1) 0 10px 13px;
+      transform: scale(1.05);
+      animation: heartbeat 1.2s infinite;
+    }
+    .mat-fab::after {
+      background: #ff4081;
+      box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14);
+    }
+
+    .mat-raised-button:focus {
+      background: #1d524ed4;
+      box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14);
+    }
+
+    .mat-raised-button::after {
+      background: #1d524ed4;
+      box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14);
+    }
+
+    .left-container {
+      display: flex;
+      justify-content: space-evenly;
+      width: calc(100% - 600px);
+      /*add here*/
+      @media screen and (max-width: 1240px) {
+        flex-direction: column;
+        align-items: center;
+        width: 35%;
+      }
+      @media screen and (max-width: 930px) {
+        width: 100%;
+        flex-direction: revert;
+        margin-top: 500px;
+        align-items: flex-start;
+      }
+    }
+
+    .side-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      width: 25vw;
+      @media screen and (max-width: 1240px) {
+        width: 32vw;
+      }
+      @media screen and (max-width: 930px) {
+        width: 45vw;
+      }
+      ::ng-deep input.mat-input-element {
+        padding-bottom: 3px !important;
+        color: #fff !important;
+      }
+
+      ::placeholder {
+        color: white;
+        opacity: 1;
+      }
+
+      .add-wrapper {
+        width: 100%;
+        .add-container {
+          margin-bottom: 20px;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          background-color: #224763;
+          font-size: 20px;
+          border-radius: 5px;
+          box-shadow: 0 3px 1px -2px #0003, 0 2px 2px #00000024,
+            0 1px 5px #0000001f;
+
+          .new-user {
+            margin: 20px 10px 0px 20px;
+          }
+          .add-btn {
+            position: relative;
+            margin: 1em;
+            margin-left: 5px;
+            height: 51px;
+            width: fit-content;
+            border-radius: 5px;
+            background-image: linear-gradient(
+              92.83deg,
+              #fee119 0,
+              #ebcd0b 100%
+            );
+            -webkit-box-shadow: 0 8px 6px -6px black;
+            -moz-box-shadow: 0 8px 6px -6px black;
+            box-shadow: 0 8px 6px -6px black;
+            cursor: pointer;
+
+            .add-icon {
+              color: black;
+              font-weight: bold;
+              font-size: 32px;
+              position: absolute;
+              bottom: 18px;
+              right: 23px;
+            }
+          }
+          .add-btn:hover {
+            background-image: none;
+            background-color: black;
+            box-shadow: rgba(255, 255, 255, 0.2) 0 3px 15px inset,
+              rgba(0, 0, 0, 0.1) 0 3px 5px, rgba(0, 0, 0, 0.1) 0 10px 13px;
+            transform: scale(1.05);
+            .add-icon {
+              color: #fee119;
+            }
+          }
+        }
+        .search-container {
+          min-height: 465px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 10px;
+          margin-bottom: 20px;
+          background-color: #224763;
+          border-radius: 5px;
+          box-shadow: 0 3px 1px -2px #0003, 0 2px 2px #00000024,
+            0 1px 5px #0000001f;
+          .hexa-container {
+            min-width: 100px;
+            margin-left: 10px;
+            max-height: 60px;
+            margin-bottom: 20px;
+            .button {
+              position: relative;
+              display: block;
+              background: transparent;
+              height: 70px;
+              line-height: 50px;
+              padding-left: 8px;
+              font-size: 12px;
+              text-decoration: none;
+              text-transform: uppercase;
+              color: white;
+              margin: 40px auto;
+              font-family: Helvetica, Arial, sans-serif;
+              box-sizing: border-box;
+            }
+            .button:before,
+            .button:after {
+              position: absolute;
+              content: "";
+              width: 70px;
+              left: 0px;
+              height: 25px;
+            }
+
+            .button:before {
+              transform: perspective(15px) rotateX(10deg) !important;
+            }
+            .button:after {
+              top: 37px;
+              transform: perspective(15px) rotateX(-10deg) !important;
+            }
+
+            /* Button Border Style */
+
+            .button.border:before,
+            .button.border:after {
+              border: 6px solid #68c9c5;
+              background: #072225;
+            }
+            .button.border:before {
+              border-bottom: none; /* to prevent the border-line showing up in the middle of the shape */
+            }
+            .button.border:after {
+              border-top: none; /* to prevent the border-line showing up in the middle of the shape */
+            }
+            .all-user {
+              color: #dd7455;
+              font-weight: 600;
+              width: 100%;
+              position: relative;
+              top: 9px;
+              align-items: center;
+              display: flex;
+              justify-content: center;
+              left: -11px;
+              z-index: 4;
+              flex-wrap: wrap;
+            }
+
+            .active {
+              .button.border:before,
+              .button.border:after {
+                color: white;
+                background: #ee6c4d;
+              }
+              .all-user {
+                color: black;
+              }
+            }
+            .disabled {
+              .button.border:before,
+              .button.border:after {
+                background: #a59009;
+              }
+            }
+
+            /* Button hover styles */
+            .button.border:hover:before,
+            .button.border:hover:after {
+              background: #a59009;
+            }
+            .button.border:hover {
+              color: #fff;
+            }
+          }
+          .hexa-container:hover {
+            cursor: pointer;
+            .button.border:before,
+            .button.border:after {
+              background: #fff;
+              opacity: 0.9;
+            }
+            .all-user {
+              color: #000000;
+            }
+          }
+
+          .search-icon {
+            color: white;
+          }
+
+          .group-list {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+          }
+        }
+      }
+
+      .action-group {
+        display: inline-flex;
+        margin-bottom: 20px;
+        overflow-wrap: normal;
+      }
+
+      // @media screen and (max-width: 930px) {
+      //   min-width: 380px;
+      // }
+
+      .filter-name {
+        background-color: #224763;
+        width: 100%;
+        height: 95px;
+        margin-bottom: 28px;
+        border-radius: 5px;
+        box-shadow: 0 3px 1px -2px #0003, 0 2px 2px #00000024,
+          0 1px 5px #0000001f;
+        text-align: center;
+        .mat-form-field {
+          margin-top: 20px;
+          width: 90%;
+        }
+      }
+      .table-container {
+        width: 100%;
+        margin-bottom: 50px;
+        max-height: 500px;
+        display: block;
+        overflow-y: scroll;
+
+        th.mat-header-cell {
+          font-size: 20px;
+          color: #c2e4f0;
+          background-color: #224763;
+          height: 100px;
+          width: 100%;
+        }
+
+        .mat-row .mat-cell {
+          border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+          border-top: 1px solid transparent;
+          color: #c2e4ee;
+          margin-bottom: -1px;
+          background-color: #224763;
+          font-size: 16px;
+          cursor: default;
+          padding: 10px 16px;
+        }
+
+        th.mat-header-cell:first-of-type {
+          padding-left: 24px !important;
+          background-color: #224763;
+          cursor: default;
+        }
+        td.mat-cell:first-of-type td.mat-footer-cell:first-of-type {
+          padding-left: 24px !important;
+          color: white;
+          background-color: #224763;
+          cursor: default;
+        }
+
+        th.mat-header-cell:first-of-type {
+          padding-top: 32px !important;
+        }
+        .select-all {
+          font-size: 13px;
+          padding-top: 10px;
+          color: #f1a60a;
+        }
+        ::ng-deep .mat-checkbox-disabled .mat-checkbox-label {
+          color: #f1a60a !important;
+        }
+        // overwrite the checkbox background
+        ::ng-deep .mat-checkbox-checked .mat-checkbox-background,
+        .mat-checkbox-indeterminate .mat-checkbox-background {
+          padding-top: 10px !important;
+          background-color: #fee119 !important;
+        }
+
+        // overwrite the ripple overlay on hover and click
+        ::ng-deep
+          .mat-checkbox:not(.mat-checkbox-disabled)
+          .mat-checkbox-ripple
+          .mat-ripple-element {
+          background-color: #fee119 !important;
+        }
+
+        .actions-container {
+          text-align: center;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+          background-color: #224763;
+        }
+
+        .actions-btn {
+          display: flex;
+          flex-direction: row;
+          padding: 4px 10px;
+
+          .checkbox-btn {
+            padding-top: 7px;
+          }
+        }
+
+        .demo-row-is-clicked {
+          font-weight: bold;
+        }
+        .mat-icon {
+          font-weight: bold;
+          color: white;
+        }
+        .mat-icon:hover {
+          color: rgb(184, 119, 184);
+          border: 1px solid rgb(184, 119, 184);
+        }
+
+        .isDisabled-color {
+          background-color: #79888a;
+        }
+      }
+    }
+  }
+
+  /*add here*/
+  @media screen and (max-width: 1320px) {
+    .main-container {
+      flex-flow: row wrap;
+    }
+  }
+
+  @keyframes heartbeat {
+    0% {
+      transform: scale(0.75);
+    }
+    20% {
+      transform: scale(1);
+    }
+    40% {
+      transform: scale(0.75);
+    }
+    60% {
+      transform: scale(1);
+    }
+    80% {
+      transform: scale(0.75);
+    }
+    100% {
+      transform: scale(0.75);
+    }
+  }
+}

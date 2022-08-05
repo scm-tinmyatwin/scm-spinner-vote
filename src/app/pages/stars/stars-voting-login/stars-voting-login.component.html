@@ -1,0 +1,25 @@
+<mat-card class="card-container">
+  <mat-card-header>
+    <mat-card-title>Login</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="login-form">
+      <div class="label-msg">
+        <mat-label>Do you want to login with your Google Account?</mat-label>
+      </div>
+      <mat-dialog-actions>
+        <div class="actions">
+          <button
+            class="login-btn"
+            type="submit"
+            (click)="login()"
+            mat-raised-button
+          >
+            <i class="fab fa-google"></i>
+            Login with Google
+          </button>
+        </div>
+      </mat-dialog-actions>
+    </form>
+  </mat-card-content>
+</mat-card>

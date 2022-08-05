@@ -1,0 +1,119 @@
+<div class="container">
+  <div class="side-container">
+    <div class="register-btn">
+      <button
+        mat-raised-button
+        routerLink="/voting/register/register"
+        *ngIf="currentUser?.type === 'admin'"
+      >
+        Register
+      </button>
+    </div>
+    <div class="scroll-bar">
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        class="mat-elevation-z8 table-container"
+      >
+        <!-- Title Column -->
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef>Title</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.title }}
+          </td>
+        </ng-container>
+
+        <!-- User Column -->
+        <ng-container matColumnDef="userName">
+          <th mat-header-cell *matHeaderCellDef>Presenter Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.user_id }}</td>
+        </ng-container>
+
+        <!-- Start Time Column -->
+        <ng-container matColumnDef="startTime">
+          <th mat-header-cell *matHeaderCellDef>Start Time</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.startTime.toDate() | date: "yyyy/MM/dd h:mm:ss a" }}
+          </td>
+        </ng-container>
+
+        <!-- Voting Status Column -->
+        <ng-container matColumnDef="endVoting">
+          <th mat-header-cell *matHeaderCellDef>Voting Status</th>
+          <td mat-cell *matCellDef="let element">
+            {{
+              element.endVoting
+                ? "Voting has now finished"
+                : "Voting is not finished yet."
+            }}
+          </td>
+        </ng-container>
+
+        <!-- End Voting Column -->
+        <ng-container matColumnDef="status">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            [hidden]="currentUser?.type == 'admin' ? false : true"
+          >
+            End Voting
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            class="status"
+            [hidden]="currentUser?.type == 'admin' ? false : true"
+          >
+            <mat-slide-toggle
+              color="warn"
+              [(ngModel)]="element.endVoting"
+              (click)="endVoting(element.id)"
+            ></mat-slide-toggle>
+          </td>
+        </ng-container>
+
+        <!-- detail Column -->
+        <ng-container matColumnDef="detail">
+          <th mat-header-cell *matHeaderCellDef>Detail</th>
+          <td mat-cell *matCellDef="let element">
+            <button
+              mat-raised-button
+              (click)="goDetail(element.id)"
+              routerLinkActive="active"
+            >
+              Vote Page
+            </button>
+          </td> </ng-container
+        ><!-- detail Column -->
+        <ng-container matColumnDef="actions">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            [hidden]="currentUser?.type == 'admin' ? false : true"
+          >
+            Action
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [hidden]="currentUser?.type == 'admin' ? false : true"
+          >
+            <button mat-icon-button (click)="editVoteList(element.id)">
+              <mat-icon class="delete-icon">edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="deleteVoteList(element.id)">
+              <mat-icon class="delete-icon">delete</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let element; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  </div>
+</div>
+<ngx-loading
+  [show]="loading"
+  [config]="{ backdropBorderRadius: '0px', fullScreenBackdrop: true }"
+></ngx-loading>

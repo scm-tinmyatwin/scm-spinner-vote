@@ -1,0 +1,101 @@
+.card-container {
+  margin: 100px 20%;
+  background-color: #61b0da;
+  padding: 30px;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12),
+    0 3px 5px -1px rgba(0, 0, 0, 0.2);
+
+  .mat-card-header {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  .mat-card-header .mat-card-title {
+    font-size: 32px;
+    padding-bottom: 10px;
+    color: #fee119;
+    text-shadow: 2px 2px 3px black;
+    margin-top: 25px;
+    font-weight: bold;
+    font-size: 32px;
+    padding-bottom: 30px;
+    font-family: monospace;
+    letter-spacing: 0.2em;
+  }
+  .vote-form {
+    min-width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 20%;
+    ::ng-deep input.mat-input-element {
+      padding-bottom: 3px !important;
+      color: black !important;
+    }
+    ::ng-deep textarea.mat-input-element {
+      color: black !important;
+    }
+
+    ::placeholder {
+      color: white;
+      opacity: 1;
+    }
+    .form-container {
+      width: 100%;
+    }
+    .correct {
+      .label-answer,
+      .mat-radio-button {
+        margin-right: 15px;
+      }
+      // For outer circle
+      ::ng-deep
+        .mat-radio-button.mat-accent.mat-radio-checked
+        .mat-radio-outer-circle {
+        border-color: #fee119;
+      }
+
+      // For inner circle
+      ::ng-deep .mat-radio-checked .mat-radio-inner-circle {
+        background-color: #fee119;
+      }
+    }
+    .register-btn {
+      margin: 0 auto;
+    }
+  }
+
+  .mat-flat-button,
+  .mat-raised-button,
+  .mat-fab,
+  .mat-mini-fab {
+    margin-top: 30px;
+    color: black;
+    background: #fee119;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .mat-flat-button:hover,
+  .mat-raised-button:hover,
+  .mat-fab:hover,
+  .mat-mini-fab:hover {
+    box-shadow: rgba(255, 255, 255, 0.2) 0 3px 15px inset,
+      rgba(0, 0, 0, 0.1) 0 3px 5px, rgba(0, 0, 0, 0.1) 0 10px 13px;
+    transform: scale(1.05);
+  }
+  .mat-button-disabled {
+    cursor: not-allowed;
+    background-color: #72706e;
+    &:hover {
+      background-color: #72706e !important;
+      color: #ffffff !important;
+    }
+  }
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: white;
+  }
+
+  @media screen and (max-width: 550px) {
+    padding: 20px 0;
+  }
+}

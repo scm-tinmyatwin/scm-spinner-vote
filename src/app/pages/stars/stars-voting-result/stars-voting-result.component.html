@@ -1,0 +1,44 @@
+<div class="container">
+  <mat-card class="card-container">
+    <mat-card-header class="header-container">
+      <div class="title">
+        <mat-card-title>{{ title }}</mat-card-title>
+      </div>
+    </mat-card-header>
+    <div *ngFor="let barChartData of barChartList; index as index">
+      <mat-card-header class="header-container">
+        <div class="title">
+          <mat-card-title
+            >By
+            <span class="presenter">{{ presenterList[0][index].name }}</span>
+          </mat-card-title>
+        </div>
+      </mat-card-header>
+
+      <mat-card-content class="content-container">
+        <div class="event-title" *ngIf="endVoting">
+          <span
+            >Congratulations. Got <span class="vote-star">{{ result[index][0].star }}</span> for this
+            presentation title. &nbsp;</span
+          >
+        </div>
+        <div class="chart">
+          <canvas
+            baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [plugins]="barChartPlugins"
+            [legend]="barChartLegend"
+            [type]="barChartType"
+            >
+          </canvas>
+        </div>
+      </mat-card-content>
+    </div>
+  </mat-card>
+</div>
+<ngx-loading
+  [show]="loading"
+  [config]="{ backdropBorderRadius: '0px', fullScreenBackdrop: true }"
+></ngx-loading>

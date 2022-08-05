@@ -1,0 +1,48 @@
+<mat-toolbar color="primary" class="toolbar">
+  <div class="menu">
+    <a mat-button [routerLink]="['/spinner-wheel']" routerLinkActive="active"
+      >Spinner Wheel</a
+    >
+    <a mat-button [routerLink]="['/quiz-list']" routerLinkActive="active">
+      Quiz List</a
+    >
+    <a mat-button [routerLink]="['/voting-list']" routerLinkActive="active">
+      Start Voting List</a
+    >
+    <a
+      mat-button
+      [routerLink]="['/user-list']"
+      routerLinkActive="active"
+      *ngIf="currentUser?.type === 'admin' && isUserLoggedIn"
+    >
+      User List</a
+    >
+  </div>
+  <div class="user">
+    <div class="actions-group" *ngIf="!isUserLoggedIn">
+      <button
+        mat-button
+        class="login-icon"
+        aria-label="login"
+        routerLink="/login"
+        routerLinkActive="active"
+      >
+        <span class="login-msg"> Login </span>
+      </button>
+    </div>
+    <div *ngIf="isUserLoggedIn" class="welcome-msg">
+      Welcome {{ currentUser?.name }}
+    </div>
+    <div class="actions-group" *ngIf="isUserLoggedIn">
+      <button
+        class="login-icon"
+        mat-button
+        aria-label="logout"
+        (click)="logout()"
+      >
+        <span class="login-msg"> Logout </span>
+      </button>
+    </div>
+  </div>
+</mat-toolbar>
+<router-outlet></router-outlet>

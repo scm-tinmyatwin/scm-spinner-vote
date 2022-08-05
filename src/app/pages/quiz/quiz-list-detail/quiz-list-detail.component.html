@@ -1,0 +1,103 @@
+<div class="container">
+  <div class="side-container">
+    <div class="wrapper">
+      <form
+        [formGroup]="updateForm"
+        (ngSubmit)="type == 'register' ? registerTitle() : updateTitle()"
+      >
+        <div class="update-wrapper">
+          <div class="input-wrapper">
+            <mat-form-field class="form-container" appearance="outline">
+              <input
+                class="main-title"
+                type="text"
+                matInput
+                placeholder="Title"
+                formControlName="title"
+              />
+            </mat-form-field>
+          </div>
+
+          <div class="update-btn">
+            <button
+              type="submit"
+              mat-raised-button
+              [disabled]="!updateForm.valid"
+            >
+              {{ type == "register" ? "Register" : "Update" }}
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="registerBtn">
+      <button
+        mat-raised-button
+        [disabled]="!updateForm.valid"
+        (click)="registerList()"
+      >
+        Add quiz
+      </button>
+    </div>
+
+    <div *ngIf="quizListById?.length > 0; else noRecord">
+      <div class="table-container">
+        <table mat-table [dataSource]="dataSource">
+          <!-- Title Column -->
+          <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef>Title</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.title }}
+            </td>
+          </ng-container>
+
+          <!-- Description Column -->
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef>Description</th>
+            <td mat-cell *matCellDef="let element">{{ element.desc }}</td>
+          </ng-container>
+
+          <!-- Description Column -->
+          <ng-container matColumnDef="correct">
+            <th mat-header-cell *matHeaderCellDef>Correct Answer</th>
+            <td mat-cell *matCellDef="let element">{{ element.correct }}</td>
+          </ng-container>
+
+          <!-- Vote Count Column -->
+          <ng-container matColumnDef="voteCount">
+            <th mat-header-cell *matHeaderCellDef>Vote Count</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.count }}
+            </td>
+          </ng-container>
+
+          <!-- Actions Column -->
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button (click)="editList(element.id)">
+                <mat-icon class="delete-icon">edit</mat-icon>
+              </button>
+              <button mat-icon-button (click)="deleteList(element.id)">
+                <mat-icon class="delete-icon">delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let element; columns: displayedColumns"></tr>
+        </table>
+      </div>
+    </div>
+    <ng-template #noRecord>
+      <div class="no-data">
+        No quiz found!<br />Plz add quiz after register title.
+      </div>
+    </ng-template>
+  </div>
+</div>
+<ngx-loading
+  [show]="loading"
+  [config]="{ backdropBorderRadius: '0px', fullScreenBackdrop: true }"
+></ngx-loading>

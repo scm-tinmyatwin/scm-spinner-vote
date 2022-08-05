@@ -1,0 +1,63 @@
+<div class="container vote-page">
+  <div class="header-container">
+    <span class="event-title"> {{ title }} </span>
+  </div>
+  <div class="correct-title" *ngIf="isEndVoting">
+    <span>The correct quiz is {{ correctTitle }} </span>
+  </div>
+
+  <div class="content">
+    <div class="card-container">
+      <ng-container *ngFor="let quiz of quizListById; let i = index">
+        <mat-card class="vote-card">
+          <mat-card-header> </mat-card-header>
+          <mat-card-content class="vote-content-container">
+            <div class="quiz-content">
+              <div class="quiz-info">
+                <div class="quiz-name">
+                  <div class="quiz-name-desc"><span>{{ quiz.desc }}</span></div>
+                </div>
+                <div class="quiz-vote-count">
+                  <div class="quiz-name-p">Vote Count - {{ quiz.count }}</div>
+                </div>
+
+                <button
+                  *ngIf="!isEndVoting"
+                  [disabled]="isDisabled"
+                  mat-raised-button
+                  (click)="submitVote(quiz.count, quiz.id)"
+                  color="warn"
+                  class="vote-btn"
+                >
+                  <span *ngIf="!isDisabled">VOTE</span>
+                  <span *ngIf="isDisabled">VOTED</span>
+                </button>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </ng-container>
+    </div>
+    <mat-card-content class="barchart-container">
+      <div class="wrapper">
+        <span>TOTAL VOTE COUNT RESULT &nbsp;</span>
+      </div>
+      <div class="chart">
+        <canvas
+          baseChart
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="barChartOptions"
+          [plugins]="barChartPlugins"
+          [legend]="barChartLegend"
+          [type]="barChartType"
+        >
+        </canvas>
+      </div>
+    </mat-card-content>
+  </div>
+  <ngx-loading
+    [show]="loading"
+    [config]="{ backdropBorderRadius: '0px', fullScreenBackdrop: true }"
+  ></ngx-loading>
+</div>

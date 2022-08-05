@@ -2,8 +2,7 @@
   "name": "scm-spinner-vote",
   "version": "0.0.0",
   "engines": {
-    "node": "14.17.2",
-    "npm": "8.12.1"
+    "node": "14.17.2"
   },
   "scripts": {
     "ng": "ng",

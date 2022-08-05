@@ -1,5 +1,5 @@
 {
-  "name": "scm-spinner-vote",
+  "name": "public",
   "version": "0.0.0",
   "engines": {
     "node": "14.17.2"
@@ -9,17 +9,15 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "heroku-postbuild": "ng build — prod",
+    "heroku-postbuild": "ng build",
     "test": "ng test"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "^14.1.0",
     "@angular/cdk": "^14.1.0",
-    "@angular/cli": "~14.1.0",
     "@angular/common": "^14.1.0",
     "@angular/compiler": "^14.1.0",
-    "@angular/compiler-cli": "^14.1.0",
     "@angular/core": "^14.1.0",
     "@angular/fire": "^7.4.1",
     "@angular/forms": "^14.1.0",
@@ -28,14 +26,14 @@
     "@angular/platform-browser-dynamic": "^14.1.0",
     "@angular/router": "^14.1.0",
     "@ng-select/ng-select": "^8.1.1",
+    "@angular/cli": "~14.1.0",
+    "@angular/compiler-cli": "^14.1.0",
     "chart.js": "^3.7.1",
-    "express": "^4.18.1",
     "firebase": "^9.9.1",
     "gsap": "^2.1.3",
     "ng2-charts": "^3.0.0-rc.3",
     "ngx-loading": "^14.0.0",
     "ngx-wheel": "^4.0.5",
-    "path": "^0.12.7",
     "rxfire": "^6.0.3",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

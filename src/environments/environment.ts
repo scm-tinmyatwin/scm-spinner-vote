@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   firebaseConfig: {
   apiKey: "AIzaSyCnuWHEEGl6rsZdu11PJxt90CTB6GNqi3w",
-  authDomain: "group-chat-6fff3.web.app",
+  authDomain: "scm-spinner-vote.herokuapp.com",
   databaseURL: "https://group-chat-6fff3-default-rtdb.firebaseio.com",
   projectId: "group-chat-6fff3",
   storageBucket: "group-chat-6fff3.appspot.com",

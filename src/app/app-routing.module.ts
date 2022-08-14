@@ -38,7 +38,7 @@ const routes: Routes = [
   // User-list
   { path: 'user-list', component: UserListComponent, canActivate: [AuthGuard] },
   { path: 'user/:type/:id', component: UserRegisterComponent, canActivate: [AuthGuard] },
-  { path: '**', redirectTo: '/spinner-wheel', pathMatch: 'full' },
+  // { path: '**', redirectTo: '/spinner-wheel', pathMatch: 'full' },
 ];
 
 @NgModule({
